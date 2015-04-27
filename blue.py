@@ -1,22 +1,30 @@
 from kivy.app import App
 from kivy.uix.widget import Widget
 from kivy.uix.textinput import TextInput
-from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
-#controller class
-class BlueApp(Widget):
-	def __init__(self):
-		Widget.__init__(self)
-		textinput = TextInput(text="Who are you?")
-		self.add_widget(textinput)
+from kivy.uix.button import Button
 
+#controller class
+class Form(GridLayout):
+	def __init__(self, **kwargs):
+		super(Form, self).__init__(**kwargs)
+		self.cols = 2
+		self.add_widget(Label(text="Store"))
+		self.store = TextInput(multiline=False)
+		self.add_widget(self.store)
+		self.add_widget(Label(text="Item"))
+		self.item = TextInput(multiline=False)
+		self.add_widget(Label(text="Store"))
+		self.add_widget(Button(text="Broadcast Sale", on_press=self.submit))
+	def submit(self, *args):
+		print("button pressed")
 
 #actuall app
-class BlueTag(App):
+class BlueTagApp(App):
     def build(self):
-    	textinput = TextInput(text='Hello')
-        return BlueApp()
+        return Form()
 
 
 if __name__ == '__main__':
-    BlueTag().run()
+    BlueTagApp().run()
