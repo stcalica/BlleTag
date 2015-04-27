@@ -1,0 +1,7 @@
+<BlueApp>:
+ StackLayout:
+    orientation: 'lr-tb'
+    padding: 10
+    spacing: 5
+    TextInput:
+    	text:
